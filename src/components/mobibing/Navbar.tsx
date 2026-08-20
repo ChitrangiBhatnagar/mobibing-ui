@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { useWishlist } from "@/lib/wishlist";
 
 const links = [
+  { label: "Marketplace", to: "/marketplace" as const },
   { label: "Buy Phones", to: "/marketplace" as const },
   { label: "Sell Phone", to: "/sell" as const },
   { label: "Exchange", to: "/sell" as const },
