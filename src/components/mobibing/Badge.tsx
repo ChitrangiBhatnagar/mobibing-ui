@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type BadgeTone = "green" | "orange" | "neutral" | "glass";
+type BadgeTone = "green" | "accent" | "neutral" | "glass";
 
 export function Badge({
   children,
@@ -16,7 +16,7 @@ export function Badge({
 }) {
   const tones: Record<BadgeTone, string> = {
     green: "bg-primary-soft text-primary-dark border-primary/20",
-    orange: "bg-accent-soft text-accent border-accent/25",
+    accent: "bg-accent-soft text-accent border-accent/25",
     neutral: "bg-muted text-muted-foreground border-border",
     glass: "glass-card text-foreground",
   };
