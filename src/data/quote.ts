@@ -51,7 +51,7 @@ export const quoteModels: QuoteModel[] = [
   {
     id: "oneplus-12",
     brand: "OnePlus",
-    name: "OnePlus 12",
+    name: "12",
     base: 28000,
     storages: [
       { label: "256GB", multiplier: 1 },
