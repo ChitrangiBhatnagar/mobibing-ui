@@ -142,7 +142,7 @@ export function calculateQuote(input: QuoteInput) {
 
   const start = model.base * storage.multiplier;
   const breakdown: { label: string; delta: number }[] = [
-    { label: `${model.name} · ${storage.label} base value`, delta: start },
+    { label: `${model.brand} ${model.name} · ${storage.label} base value`, delta: start },
   ];
 
   let value = start;
