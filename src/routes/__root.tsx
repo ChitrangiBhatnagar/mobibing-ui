@@ -78,14 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MobiBing — Certified Pre-Owned Electronics Marketplace" },
+      { title: "MobiBing Certified Pre-Owned Electronics Marketplace" },
       {
         name: "description",
         content:
           "Buy, sell, and exchange certified pre-owned smartphones, laptops and tablets — tested, verified, and warranty-backed.",
       },
       { name: "author", content: "MobiBing" },
-      { property: "og:title", content: "MobiBing — Certified Pre-Owned Electronics" },
+      { property: "og:title", content: "MobiBing Certified Pre-Owned Electronics" },
       {
         property: "og:description",
         content:

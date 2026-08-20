@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "MobiBing — Certified Pre-Owned Phones, Laptops & Tablets",
+        title: "MobiBing Certified Pre-Owned Phones, Laptops & Tablets",
       },
       {
         name: "description",
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "MobiBing — Smart Phones. Smarter Choice. Better Planet.",
+        content: "MobiBing Smart Phones. Smarter Choice. Better Planet.",
       },
       {
         property: "og:description",
