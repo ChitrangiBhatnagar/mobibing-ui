@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { motion } from "motion/react";
 import { Heart, ShieldCheck, Star } from "lucide-react";
 import { Badge } from "./Badge";
 import { formatINR, productDiscount, type Product } from "@/data/products";
+import { useWishlist } from "@/lib/wishlist";
 import { cn } from "@/lib/utils";
 
 export function ProductCard({
@@ -12,7 +12,8 @@ export function ProductCard({
   product: Product;
   index?: number;
 }) {
-  const [liked, setLiked] = useState(false);
+  const { has, toggle } = useWishlist();
+  const liked = has(product.id);
   const off = productDiscount(product);
 
   return (
@@ -31,7 +32,7 @@ export function ProductCard({
         </Badge>
         <button
           type="button"
-          onClick={() => setLiked((v) => !v)}
+          onClick={() => toggle(product.id)}
           aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
           aria-pressed={liked}
           className="absolute right-4 top-4 flex size-9 items-center justify-center rounded-full bg-background/90 text-muted-foreground shadow-[var(--shadow-soft)] transition-colors hover:text-accent"
