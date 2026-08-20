@@ -14,6 +14,7 @@ import { Navbar } from "@/components/mobibing/Navbar";
 import { Footer } from "@/components/mobibing/Footer";
 import { Badge } from "@/components/mobibing/Badge";
 import { ProductCard } from "@/components/mobibing/ProductCard";
+import { TradeInWidget } from "@/components/mobibing/TradeInWidget";
 import {
   formatINR,
   getProduct,
@@ -232,6 +233,20 @@ function ProductDetail() {
                 ))}
               </dl>
             </motion.div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 pt-16 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+            <TradeInWidget devicePrice={product.price} />
+            <div className="surface-card rounded-3xl bg-primary-soft/50 p-6">
+              <h2 className="text-lg font-semibold">How exchange works</h2>
+              <ol className="mt-4 space-y-3 text-sm text-muted-foreground">
+                <li>1. Pick your old device and condition to see instant credit.</li>
+                <li>2. We verify the device at free doorstep pickup.</li>
+                <li>3. Credit is adjusted on this order — pay only the balance.</li>
+              </ol>
+            </div>
           </div>
         </section>
 

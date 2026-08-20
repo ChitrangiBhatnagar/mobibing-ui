@@ -1,8 +1,19 @@
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Search, SlidersHorizontal, X } from "lucide-react";
+import {
+  Heart,
+  Percent,
+  Search,
+  SlidersHorizontal,
+  Sparkles,
+  Star,
+  Tag,
+  Repeat2,
+  X,
+} from "lucide-react";
 
 import { PageShell } from "@/components/mobibing/PageShell";
+import { QuickActionsBar } from "@/components/mobibing/QuickActions";
 import { ProductCard } from "@/components/mobibing/ProductCard";
 import {
   brands,
@@ -148,6 +159,49 @@ function MarketplacePage() {
     return sorted;
   }, [query, activeCategories, activeBrands, activeConditions, maxPrice, sort]);
 
+  const quickActions = [
+    {
+      label: "Deals under ₹30,000",
+      hint: "Budget-friendly picks",
+      icon: <Tag className="size-4" strokeWidth={1.75} />,
+      active: maxPrice <= 30000,
+      onClick: () => setMaxPrice(maxPrice <= 30000 ? MAX_PRICE : 30000),
+    },
+    {
+      label: "Biggest discounts",
+      hint: "Sorted by savings",
+      icon: <Percent className="size-4" strokeWidth={1.75} />,
+      active: sort === "discount",
+      onClick: () => setSort(sort === "discount" ? "featured" : "discount"),
+    },
+    {
+      label: "Top rated",
+      hint: "4.5★ and above",
+      icon: <Star className="size-4" strokeWidth={1.75} />,
+      active: sort === "rating",
+      onClick: () => setSort(sort === "rating" ? "featured" : "rating"),
+    },
+    {
+      label: "Like new only",
+      hint: "Near-flawless devices",
+      icon: <Sparkles className="size-4" strokeWidth={1.75} />,
+      active: activeConditions.includes("Like New"),
+      onClick: () => toggle(activeConditions, "Like New" as ProductCondition, setActiveConditions),
+    },
+    {
+      label: "Trade in your phone",
+      hint: "Get an instant quote",
+      icon: <Repeat2 className="size-4" strokeWidth={1.75} />,
+      to: "/sell" as const,
+    },
+    {
+      label: "Your wishlist",
+      hint: "Saved devices",
+      icon: <Heart className="size-4" strokeWidth={1.75} />,
+      to: "/wishlist" as const,
+    },
+  ];
+
   const filters = (
     <div className="flex flex-col gap-5">
       <FilterGroup title="Category">
@@ -226,6 +280,8 @@ function MarketplacePage() {
       description="12 live listings from verified sellers. Filter by brand, condition, storage and budget — prices update instantly."
     >
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8">
+        <QuickActionsBar actions={quickActions} />
+
         <div className="surface-card mb-8 flex flex-col gap-3 rounded-3xl p-4 sm:flex-row sm:items-center">
           <div className="flex flex-1 items-center gap-3 rounded-2xl bg-muted/70 px-4 py-3">
             <Search
