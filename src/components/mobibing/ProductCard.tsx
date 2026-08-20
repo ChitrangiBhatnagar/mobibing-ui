@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import { Heart, ShieldCheck, Star } from "lucide-react";
 import { Badge } from "./Badge";
 import { formatINR, productDiscount, type Product } from "@/data/products";
@@ -27,7 +28,7 @@ export function ProductCard({
     >
       <div className="relative flex items-center justify-center bg-muted/60 p-6">
         <div className="halo-glow pointer-events-none absolute inset-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        <Badge tone="glass" className="absolute left-4 top-4">
+        <Badge tone="glass" className="absolute left-4 top-4 z-[2]">
           {product.condition}
         </Badge>
         <button
@@ -35,13 +36,19 @@ export function ProductCard({
           onClick={() => toggle(product.id)}
           aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
           aria-pressed={liked}
-          className="absolute right-4 top-4 flex size-9 items-center justify-center rounded-full bg-background/90 text-muted-foreground shadow-[var(--shadow-soft)] transition-colors hover:text-accent"
+          className="absolute right-4 top-4 z-[2] flex size-9 items-center justify-center rounded-full bg-background/90 text-muted-foreground shadow-[var(--shadow-soft)] transition-colors hover:text-accent"
         >
           <Heart
             className={cn("size-4", liked && "fill-accent text-accent")}
             strokeWidth={1.75}
           />
         </button>
+        <Link
+          to="/product/$id"
+          params={{ id: product.id }}
+          aria-label={`View ${product.name}`}
+          className="absolute inset-0 z-[1]"
+        />
         <img
           src={product.image}
           alt={product.name}
@@ -53,7 +60,15 @@ export function ProductCard({
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-6">
-        <h3 className="text-base font-semibold leading-snug">{product.name}</h3>
+        <h3 className="text-base font-semibold leading-snug">
+          <Link
+            to="/product/$id"
+            params={{ id: product.id }}
+            className="transition-colors hover:text-primary-dark"
+          >
+            {product.name}
+          </Link>
+        </h3>
 
         <div className="flex flex-wrap items-baseline gap-2">
           <span className="text-xl font-bold">{formatINR(product.price)}</span>
@@ -71,6 +86,14 @@ export function ProductCard({
           />
           {product.warranty}
         </div>
+
+        <Link
+          to="/product/$id"
+          params={{ id: product.id }}
+          className="mt-2 inline-flex w-fit items-center rounded-full border border-border px-4 py-2 text-sm font-semibold transition-colors hover:border-accent/40 hover:text-accent"
+        >
+          View details
+        </Link>
 
         <div className="mt-auto flex items-center justify-between border-t border-border pt-4 text-sm">
           <span className="text-muted-foreground">{product.seller}</span>
