@@ -91,7 +91,7 @@ const tradeIns = [
     item: "Galaxy S22 · 128GB",
     quote: 17800,
     status: "Pickup scheduled",
-    tone: "orange" as const,
+    tone: "accent" as const,
   },
 ];
 
@@ -122,7 +122,7 @@ function AccountPage() {
   return (
     <PageShell
       eyebrow="Account"
-      title="Hello, Chitrangi —"
+      title="Hello, John —"
       highlight="here is your hub"
       description="Orders, trade-in payouts, saved addresses and alerts for your MobiBing account."
       aside={
@@ -143,9 +143,9 @@ function AccountPage() {
                 <User className="size-6" strokeWidth={1.75} />
               </span>
               <div>
-                <p className="font-semibold">Chitrangi Bhatnagar</p>
+                <p className="font-semibold">John Doe</p>
                 <p className="text-xs text-muted-foreground">
-                  chitrangi@example.com
+                  johndoe@gmail.com
                 </p>
               </div>
             </div>

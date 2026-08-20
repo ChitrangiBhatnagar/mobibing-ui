@@ -14,6 +14,7 @@ import { Route as AccountRouteImport } from './routes/account'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as SellRouteImport } from './routes/sell'
 import { Route as WishlistRouteImport } from './routes/wishlist'
+import { Route as ProductIdRouteImport } from './routes/product.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const WishlistRoute = WishlistRouteImport.update({
   path: '/wishlist',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductIdRoute = ProductIdRouteImport.update({
+  id: '/product/$id',
+  path: '/product/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/marketplace': typeof MarketplaceRoute
   '/sell': typeof SellRoute
   '/wishlist': typeof WishlistRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/marketplace': typeof MarketplaceRoute
   '/sell': typeof SellRoute
   '/wishlist': typeof WishlistRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,22 @@ export interface FileRoutesById {
   '/marketplace': typeof MarketplaceRoute
   '/sell': typeof SellRoute
   '/wishlist': typeof WishlistRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/account' | '/marketplace' | '/sell' | '/wishlist'
+  fullPaths:
+    '/' | '/account' | '/marketplace' | '/sell' | '/wishlist' | '/product/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/account' | '/marketplace' | '/sell' | '/wishlist'
-  id: '__root__' | '/' | '/account' | '/marketplace' | '/sell' | '/wishlist'
+  to: '/' | '/account' | '/marketplace' | '/sell' | '/wishlist' | '/product/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/account'
+    | '/marketplace'
+    | '/sell'
+    | '/wishlist'
+    | '/product/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +94,7 @@ export interface RootRouteChildren {
   MarketplaceRoute: typeof MarketplaceRoute
   SellRoute: typeof SellRoute
   WishlistRoute: typeof WishlistRoute
+  ProductIdRoute: typeof ProductIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +134,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WishlistRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product/$id': {
+      id: '/product/$id'
+      path: '/product/$id'
+      fullPath: '/product/$id'
+      preLoaderRoute: typeof ProductIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +150,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceRoute: MarketplaceRoute,
   SellRoute: SellRoute,
   WishlistRoute: WishlistRoute,
+  ProductIdRoute: ProductIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

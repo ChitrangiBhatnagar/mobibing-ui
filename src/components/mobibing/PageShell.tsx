@@ -25,7 +25,7 @@ export function PageShell({
         <section className="mx-auto max-w-7xl px-5 pb-10 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <Badge tone="orange">{eyebrow}</Badge>
+              <Badge tone="accent">{eyebrow}</Badge>
               <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
                 {title}{" "}
                 {highlight ? (
