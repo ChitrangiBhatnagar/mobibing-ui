@@ -134,7 +134,7 @@ export function calculateQuote(input: QuoteInput) {
   if (!model) return { value: 0, breakdown: [] as { label: string; delta: number }[] };
 
   const storage =
-    model.storages.find((s) => s.label === input.storage) ?? model.storages[0];
+    model.storages.find((s) => s.label === input.storage) ?? model.storages[0]!;
   const condition =
     conditionOptions.find((c) => c.id === input.conditionId) ??
     conditionOptions[0];

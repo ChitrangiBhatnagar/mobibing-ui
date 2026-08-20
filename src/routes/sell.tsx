@@ -116,13 +116,13 @@ function Option({
 }
 
 function SellPage() {
-  const [modelId, setModelId] = useState(quoteModels[0].id);
+  const [modelId, setModelId] = useState(quoteModels[0]!.id);
   const model = quoteModels.find((m) => m.id === modelId)!;
-  const [storage, setStorage] = useState(model.storages[0].label);
+  const [storage, setStorage] = useState(model.storages[0]!.label);
   const [conditionId, setConditionId] = useState<string>(
-    conditionOptions[0].id,
+    conditionOptions[0]!.id,
   );
-  const [ageId, setAgeId] = useState<string>(ageOptions[0].id);
+  const [ageId, setAgeId] = useState<string>(ageOptions[0]!.id);
   const [issues, setIssues] = useState<string[]>([]);
   const [extras, setExtras] = useState<string[]>(["box", "charger"]);
   const [submitted, setSubmitted] = useState(false);
@@ -136,7 +136,7 @@ function SellPage() {
   const selectModel = (id: string) => {
     const next = quoteModels.find((m) => m.id === id)!;
     setModelId(id);
-    setStorage(next.storages[0].label);
+    setStorage(next.storages[0]!.label);
     setSubmitted(false);
   };
 
